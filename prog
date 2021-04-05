@@ -1,0 +1,48 @@
+# Take <input> a into (0,0) and <shift distance> b into (-1,0)
+,<,>
+
+# Copy a into (-2,0)
+[<<+<+>>>-]<<<[>>>+<<<-]>>>
+
+# While input a is non-empty, starting at (0,0)
+[
+
+    # Copy b from (-1,0) into (0,1)
+    <[*>+/>+<*</-]
+    *>[<+>-]</
+
+    # Move to (0,1), orient towards dim 0
+    >*>/
+
+    # Copy b forward 1
+    [>+>+<<-]
+    >>[<<+>>-]<<
+
+    # Move b from (0,1), by (b,0), putting it in (b,1)
+    [
+        >[>+<-]<
+        [>+<-]>-
+    ]
+    >[<+>-]<
+
+    # Move back to (b,0)
+    *</
+
+    # Perform action (in this case +1)
+    +
+
+    # Move back to (b,1)
+    *>/
+
+    # Use copied b in (b,1) to return to (0,1)
+    [[<+>-]<-]
+
+    # Move back to (0,0)
+    *</
+
+    # Subtract one from a at (0,0)
+    -
+]
+
+# Move a from (-2,0) back to (0,0)
+<<[>>+<<-]>>
